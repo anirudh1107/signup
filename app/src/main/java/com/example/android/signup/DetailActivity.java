@@ -1,10 +1,12 @@
 package com.example.android.signup;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -37,10 +39,29 @@ public class DetailActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View view) {
-                DatabaseReference currentUser= myRef.child(mAuth.getCurrentUser().getUid());
-               currentUser.child("Username").setValue(newName.getText().toString());
-               currentUser.child("Address").setValue(newAdd.getText().toString());
-               currentUser.child("Mobile").setValue(newMob.getText().toString());
+                if(newName.getText().toString().isEmpty())
+                {
+                    Toast.makeText(DetailActivity.this,"Username cannot be empty",Toast.LENGTH_SHORT);
+                }
+                else if(newAdd.getText().toString().isEmpty())
+                {
+                    Toast.makeText(DetailActivity.this,"Address field cannot be empty",Toast.LENGTH_SHORT);
+                }
+                else if(newMob.getText().toString().trim().length()<10)
+                {
+                    Toast.makeText(DetailActivity.this,"Mobile Number must be 10 digit",Toast.LENGTH_SHORT);
+                }
+                else
+                {
+                    DatabaseReference currentUser= myRef.child(mAuth.getCurrentUser().getUid());
+                    currentUser.child("Username").setValue(newName.getText().toString());
+                    currentUser.child("Address").setValue(newAdd.getText().toString());
+                    currentUser.child("Mobile").setValue(newMob.getText().toString());
+                    mAuth.signOut();
+                    Intent i=new Intent(DetailActivity.this,home.class);
+                    startActivity(i);
+
+                }
 
             }
         });
