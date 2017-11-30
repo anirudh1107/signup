@@ -32,16 +32,13 @@ public class DetailActivity extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
         database=FirebaseDatabase.getInstance();
         myRef=database.getReference("User1");
-
+        //myanmarfna
         newSub.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view) {
-
                myRef.child(mAuth.getCurrentUser().getUid()).setValue("kjklgj");
-
             }
         });
-
     }
 }
