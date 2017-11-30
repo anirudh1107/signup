@@ -37,7 +37,11 @@ public class DetailActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View view) {
-               myRef.child(mAuth.getCurrentUser().getUid()).setValue("kjklgj");
+                DatabaseReference currentUser= myRef.child(mAuth.getCurrentUser().getUid());
+               currentUser.child("Username").setValue(newName.getText().toString());
+               currentUser.child("Address").setValue(newAdd.getText().toString());
+               currentUser.child("Mobile").setValue(newMob.getText().toString());
+
             }
         });
     }
