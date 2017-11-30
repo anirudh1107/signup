@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.android.signup.home">
+
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:scaleType="fitXY"
+    android:src="@drawable/railway"
+    />
+<LinearLayout
+    android:id="@+id/signup"
+    android:layout_width="match_parent"
+    android:layout_margin="10dp"
+    android:layout_height="100dp"
+    android:orientation="horizontal"
+    android:background="#FB8C00"
+    >
+    <ImageView
+        android:layout_marginLeft="20dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_person_add_black_24dp"
+
+
+        />
+    <TextView
+        android:layout_marginLeft="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD USER"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:textColor="#FFF"
+        />
+
+</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/get_complain"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:background="#558B2F"
+        android:layout_margin="10dp"
+        >
+        <ImageView
+            android:layout_marginLeft="20dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_announcement_black_24dp"
+
+
+            />
+        <TextView
+            android:layout_marginLeft="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SEE COMPLAINTS"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:textColor="#FFF"
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
