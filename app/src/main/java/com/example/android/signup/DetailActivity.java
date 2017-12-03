@@ -60,6 +60,7 @@ public class DetailActivity extends AppCompatActivity {
                     mAuth.signOut();
                     Intent i=new Intent(DetailActivity.this,home.class);
                     startActivity(i);
+                    finish();
 
                 }
 

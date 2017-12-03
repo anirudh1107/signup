@@ -16,18 +16,20 @@ public class word {
     private String Type;
     private String TypeDetail;
     private String key;
+    private String cid;
     private String imageUID;
 
     public word() {
     }
 
-    public word(String description, String location, String mobNumber, int status, String type,String typeDetail,String imageuid) {
+    public word(String description, String location, String mobNumber, int status, String type,String typeDetail,String Cid,String imageuid) {
         Description = description;
         Location = location;
         MobNumber = mobNumber;
         Status = status;
         Type = type;
         TypeDetail=typeDetail;
+        cid=Cid;
         imageUID=imageuid;
 
     }
@@ -44,7 +46,13 @@ public class word {
         return MobNumber;
     }
 
+    public String getCid() {
+        return cid;
+    }
 
+    public void setCid(String cid) {
+        this.cid = cid;
+    }
 
     public String getType() {
         return Type;
