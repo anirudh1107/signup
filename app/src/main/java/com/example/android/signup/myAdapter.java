@@ -50,6 +50,7 @@ public class myAdapter extends ArrayAdapter<word> {
         TextView topStatus=listView.findViewById(R.id.top_status);
         TextView longComplaintId=listView.findViewById(R.id.long_customer_id);
         TextView longComplaintType=listView.findViewById(R.id.long_complain_type);
+        TextView longComplaintDisc=listView.findViewById(R.id.long_discription);
         longComplainStatus=listView.findViewById(R.id.long_status);
         TextView longNumber =listView.findViewById(R.id.long_phone_number);
         LinearLayout onTap=listView.findViewById(R.id.on_tap);
@@ -58,7 +59,7 @@ public class myAdapter extends ArrayAdapter<word> {
         LinearLayout imageview=listView.findViewById(R.id.image_view);
         ImageView longimage=listView.findViewById(R.id.image_i);
 
-        id.setText(current.getKey());
+        id.setText(current.getCid());
         complaint.setText(current.getType());
         if(current.getStatus()==0)
             topStatus.setText("Pending");
@@ -66,11 +67,12 @@ public class myAdapter extends ArrayAdapter<word> {
             topStatus.setText("In Progress");
         else
             topStatus.setText("Completed");
-        longComplaintId.setText(current.getKey());
+        longComplaintId.setText(current.getCid());
         longComplaintType.setText(current.getType());
         subType.setText(current.getTypeDetail());
         location.setText(current.getLocation());
         longNumber.setText(current.getMobNumber());
+        longComplaintDisc.setText(current.getDescription());
         setupSpinner(current);
         onTap.setVisibility(View.GONE);
 
