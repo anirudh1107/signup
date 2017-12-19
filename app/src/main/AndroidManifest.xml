@@ -20,7 +20,10 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".complaintlistner" />
-        <activity android:name=".DetailActivity"></activity>
+        <activity android:name=".DetailActivity" />
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".LoginValidate" />
+        <activity android:name=".SignUp"></activity>
     </application>
 
 </manifest>
