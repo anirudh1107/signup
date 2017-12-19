@@ -33,7 +33,7 @@ public class DetailActivity extends AppCompatActivity {
         newSub=findViewById(R.id.reg_submit);
         mAuth=FirebaseAuth.getInstance();
         database=FirebaseDatabase.getInstance();
-        myRef=database.getReference("User1");
+        myRef=database.getReference("User");
         //myanmarfna
         newSub.setOnClickListener(new View.OnClickListener()
         {
@@ -41,15 +41,15 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(newName.getText().toString().isEmpty())
                 {
-                    Toast.makeText(DetailActivity.this,"Username cannot be empty",Toast.LENGTH_SHORT);
+                    Toast.makeText(DetailActivity.this,"Username cannot be empty",Toast.LENGTH_SHORT).show();
                 }
                 else if(newAdd.getText().toString().isEmpty())
                 {
-                    Toast.makeText(DetailActivity.this,"Address field cannot be empty",Toast.LENGTH_SHORT);
+                    Toast.makeText(DetailActivity.this,"Address field cannot be empty",Toast.LENGTH_SHORT).show();
                 }
                 else if(newMob.getText().toString().trim().length()<10)
                 {
-                    Toast.makeText(DetailActivity.this,"Mobile Number must be 10 digit",Toast.LENGTH_SHORT);
+                    Toast.makeText(DetailActivity.this,"Mobile Number must be 10 digit",Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
