@@ -25,6 +25,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         if(view==mainbutton)
         {
+
             Intent intent=new Intent(this,LoginValidate.class);
             intent.putExtra(LoginValidate.EXTRAINT,mainlogin);
             startActivity(intent);
