@@ -1,4 +1,4 @@
-package com.example.android.signup;
+package com.example.android.signup.Activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

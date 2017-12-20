@@ -1,7 +1,9 @@
-package com.example.android.signup;
+package com.example.android.signup.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.android.signup.R;
 
 public class SignUp extends AppCompatActivity {
 

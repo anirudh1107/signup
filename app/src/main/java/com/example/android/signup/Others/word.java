@@ -1,10 +1,5 @@
-package com.example.android.signup;
+package com.example.android.signup.Others;
 
-import android.widget.LinearLayout;
-
-/**
- * Created by dellpc on 11/9/2017.
- */
 
 public class word {
 

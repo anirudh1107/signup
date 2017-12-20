@@ -1,4 +1,4 @@
-package com.example.android.signup;
+package com.example.android.signup.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.android.signup.R;
 
 public class LoginValidate extends AppCompatActivity implements View.OnClickListener {
 public static final String EXTRAINT="EXTRAINT";
