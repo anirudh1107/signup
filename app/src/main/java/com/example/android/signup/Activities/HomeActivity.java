@@ -15,7 +15,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class home extends BaseCompactActivity {
+public class HomeActivity extends BaseCompactActivity {
 
     LinearLayout sign;
     LinearLayout getComplaint;
@@ -42,12 +42,12 @@ public class home extends BaseCompactActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(home.this,"ready",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this,"ready",Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
                         } else {
                             // If sign in fails, display a message to the user.
 
-                            Toast.makeText(home.this, "Authentication failed.",
+                            Toast.makeText(HomeActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
 
@@ -61,7 +61,7 @@ public class home extends BaseCompactActivity {
                                     @Override
                                     public void onClick(View view) {
 
-                                        Intent i=new Intent(home.this,MainActivity.class);
+                                        Intent i=new Intent(HomeActivity.this,MainActivity.class);
                                         startActivity(i);
                                     }
                                 }
@@ -72,7 +72,7 @@ public class home extends BaseCompactActivity {
         getComplaint.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(home.this,complaintlistner.class);
+                Intent i=new Intent(HomeActivity.this,ComplainListenerActivity.class);
                 startActivity(i);
             }
         });

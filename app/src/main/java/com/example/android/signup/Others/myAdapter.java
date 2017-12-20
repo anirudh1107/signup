@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.android.signup.Infrastructure.word;
 import com.example.android.signup.R;
 
 import java.util.List;

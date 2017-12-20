@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.android.signup.R;
 
-public class LoginValidate extends AppCompatActivity implements View.OnClickListener {
+public class LoginValidateActivity extends AppCompatActivity implements View.OnClickListener {
 public static final String EXTRAINT="EXTRAINT";
 private Button signup;
 private TextView or;
@@ -35,7 +35,7 @@ private TextView or;
     public void onClick(View view) {
         if(view==signup)
         {
-            Intent intent=new Intent(this,SignUp.class);
+            Intent intent=new Intent(this,SignUpActivity.class);
             startActivity(intent);
         }
     }

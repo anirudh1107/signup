@@ -1,4 +1,4 @@
-package com.example.android.signup.Others;
+package com.example.android.signup.Infrastructure;
 
 
 public class word {

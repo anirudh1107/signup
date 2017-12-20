@@ -28,15 +28,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(view==mainbutton)
         {
 
-            Intent intent=new Intent(this,LoginValidate.class);
-            intent.putExtra(LoginValidate.EXTRAINT,mainlogin);
+            Intent intent=new Intent(this,LoginValidateActivity.class);
+            intent.putExtra(LoginValidateActivity.EXTRAINT,mainlogin);
             startActivity(intent);
         }
 
         if(view==loginbutton)
         {
-            Intent intent=new Intent(this,LoginValidate.class);
-            intent.putExtra(LoginValidate.EXTRAINT,login);
+            Intent intent=new Intent(this,LoginValidateActivity.class);
+            intent.putExtra(LoginValidateActivity.EXTRAINT,login);
             startActivity(intent);
         }
     }

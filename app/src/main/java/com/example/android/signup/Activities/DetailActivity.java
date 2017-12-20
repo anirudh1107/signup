@@ -59,7 +59,7 @@ public class DetailActivity extends AppCompatActivity {
                     currentUser.child("Address").setValue(newAdd.getText().toString());
                     currentUser.child("Mobile").setValue(newMob.getText().toString());
                     mAuth.signOut();
-                    Intent i=new Intent(DetailActivity.this,home.class);
+                    Intent i=new Intent(DetailActivity.this,HomeActivity.class);
                     startActivity(i);
                     finish();
 

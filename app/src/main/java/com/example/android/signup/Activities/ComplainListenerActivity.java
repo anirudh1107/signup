@@ -10,7 +10,7 @@ import android.widget.Spinner;
 
 import com.example.android.signup.R;
 import com.example.android.signup.Others.myAdapter;
-import com.example.android.signup.Others.word;
+import com.example.android.signup.Infrastructure.word;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -21,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class complaintlistner extends BaseCompactActivity {
+public class ComplainListenerActivity extends BaseCompactActivity {
 
     FirebaseAuth mAuth;
     FirebaseDatabase mDatabase;
