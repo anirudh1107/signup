@@ -13,7 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.android.signup.Infrastructure.word;
+import com.example.android.signup.Infrastructure.UserInformation;
 import com.example.android.signup.R;
 
 import java.util.List;
@@ -22,10 +22,10 @@ import java.util.List;
  * Created by dellpc on 11/10/2017.
  */
 
-public class myAdapter extends ArrayAdapter<word> {
+public class myAdapter extends ArrayAdapter<UserInformation> {
 
     Spinner longComplainStatus;
-    public myAdapter(@NonNull Context context, int resource, @NonNull List<word> objects) {
+    public myAdapter(@NonNull Context context, int resource, @NonNull List<UserInformation> objects) {
         super(context, resource, objects);
     }
 
@@ -39,7 +39,7 @@ public class myAdapter extends ArrayAdapter<word> {
             listView= LayoutInflater.from(getContext()).inflate(R.layout.listitem,parent,false);
         }
 
-        word current=getItem(position);
+        UserInformation current=getItem(position);
 
         TextView id=listView.findViewById(R.id.id);
         TextView complaint=listView.findViewById(R.id.complaintype);
@@ -88,7 +88,7 @@ public class myAdapter extends ArrayAdapter<word> {
         return listView;
     }
 
-    public void setupSpinner(word current)
+    public void setupSpinner(UserInformation current)
     {
 
         ArrayAdapter spinnerAdapter=ArrayAdapter.createFromResource(getContext(),R.array.status_options,android.R.layout.simple_spinner_item);

@@ -1,4 +1,4 @@
-package com.example.android.signup.Activities;
+package com.example.android.signup.Activities.Admin;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -59,7 +59,7 @@ public class DetailActivity extends AppCompatActivity {
                     currentUser.child("Address").setValue(newAdd.getText().toString());
                     currentUser.child("Mobile").setValue(newMob.getText().toString());
                     mAuth.signOut();
-                    Intent i=new Intent(DetailActivity.this,HomeActivity.class);
+                    Intent i=new Intent(DetailActivity.this,AdminHomeActivity.class);
                     startActivity(i);
                     finish();
 

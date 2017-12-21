@@ -1,0 +1,12 @@
+<RelativeLayout
+    xmlns:androdi="http://schemas.android.com/apk/res/android"
+    androdi:layout_width="match_parent"
+    androdi:layout_height="match_parent"
+    >
+    <ListView
+        androdi:layout_width="match_parent"
+        androdi:layout_height="match_parent"
+        androdi:id="@+id/admin_request_listview"
+        >
+    </ListView>
+</RelativeLayout>

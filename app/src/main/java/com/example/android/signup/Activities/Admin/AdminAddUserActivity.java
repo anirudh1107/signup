@@ -1,4 +1,4 @@
-package com.example.android.signup.Activities;
+package com.example.android.signup.Activities.Admin;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.android.signup.Activities.BaseAuthenticatedActivity;
 import com.example.android.signup.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -17,12 +18,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
  // ho ja
-public class MainActivity extends BaseCompactActivity {
+public class AdminAddUserActivity extends BaseAuthenticatedActivity {
 
     private EditText user;
     private EditText password;
     private Button add;
-    private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,13 +68,13 @@ public class MainActivity extends BaseCompactActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
                     // Sign in success, update UI with the signed-in user's information
-                    Toast.makeText(MainActivity.this,"signup successful",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminAddUserActivity.this,"signup successful",Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
                     openForRegistration();
 
                 } else {
                     // If sign in fails, display a message to the user.
-                    Toast.makeText(MainActivity.this,"Please try again later",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminAddUserActivity.this,"Please try again later",Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
 
                 }
@@ -96,11 +97,11 @@ public class MainActivity extends BaseCompactActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent i=new Intent(MainActivity.this,DetailActivity.class);
+                            Intent i=new Intent(AdminAddUserActivity.this,DetailActivity.class);
                             startActivity(i);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
+                            Toast.makeText(AdminAddUserActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
 
                         }

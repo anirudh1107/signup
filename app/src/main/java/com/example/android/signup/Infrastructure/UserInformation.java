@@ -1,7 +1,7 @@
 package com.example.android.signup.Infrastructure;
 
 
-public class word {
+public class UserInformation {
 
 
     private String Description;
@@ -14,10 +14,10 @@ public class word {
     private String cid;
     private String imageUID;
 
-    public word() {
+    public UserInformation() {
     }
 
-    public word(String description, String location, String mobNumber, int status, String type,String typeDetail,String Cid,String imageuid) {
+    public UserInformation(String description, String location, String mobNumber, int status, String type, String typeDetail, String Cid, String imageuid) {
         Description = description;
         Location = location;
         MobNumber = mobNumber;

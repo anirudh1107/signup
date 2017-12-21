@@ -1,4 +1,4 @@
-package com.example.android.signup.Activities;
+package com.example.android.signup.Activities.Admin;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,9 +8,10 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import com.example.android.signup.Activities.BaseAuthenticatedActivity;
 import com.example.android.signup.R;
 import com.example.android.signup.Others.myAdapter;
-import com.example.android.signup.Infrastructure.word;
+import com.example.android.signup.Infrastructure.UserInformation;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -21,12 +22,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComplainListenerActivity extends BaseCompactActivity {
+public class ComplainListenerActivity extends BaseAuthenticatedActivity {
 
     FirebaseAuth mAuth;
     FirebaseDatabase mDatabase;
     DatabaseReference myRef;
-    private List<word> list1;
+    private List<UserInformation> list1;
     ListView list_View;
     private ChildEventListener mChildEventListner;
     myAdapter adapter;
@@ -39,7 +40,7 @@ public class ComplainListenerActivity extends BaseCompactActivity {
         mDatabase=FirebaseDatabase.getInstance();
         myRef=mDatabase.getReference().child("Complain");
 
-        list1=new ArrayList<word>();
+        list1=new ArrayList<UserInformation>();
         list_View=findViewById(R.id.list_view1);
         adapter=new myAdapter(this,R.layout.listitem,list1);
 
@@ -48,7 +49,7 @@ public class ComplainListenerActivity extends BaseCompactActivity {
         mChildEventListner=new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                word newWord = dataSnapshot.getValue(word.class);
+                UserInformation newWord = dataSnapshot.getValue(UserInformation.class);
                 String key=dataSnapshot.getKey();
                 newWord.setKey(key);
                 adapter.add(newWord);
@@ -83,7 +84,7 @@ public class ComplainListenerActivity extends BaseCompactActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                final word current = list1.get(i);
+                final UserInformation current = list1.get(i);
                 final LinearLayout Onclick=(LinearLayout)view.findViewById(R.id.on_tap);
                 if(Onclick.getVisibility()==View.GONE)
                     Onclick.setVisibility(View.VISIBLE);
