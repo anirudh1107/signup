@@ -5,13 +5,13 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,14 +35,14 @@ public class AddAdminAdapter extends ArrayAdapter<AdminInformation> implements V
     private LayoutInflater inflater;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
-    private Button button;
+    private Button buttonAdd,buttonRemove;
     private String username,password;
     private ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
-
+    private FrameLayout frameLayout;
+    private CardView cardView;
     private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-    int pos;
     public AddAdminAdapter(@NonNull Context context, int resource, @NonNull List<AdminInformation> objects) {
         super(context, resource, objects);
         inflater=LayoutInflater.from(context);
@@ -53,39 +53,61 @@ public class AddAdminAdapter extends ArrayAdapter<AdminInformation> implements V
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view =inflater.inflate(R.layout.admin_request_card,parent,false);
         AdminInformation information=getItem(position);
-         pos=position;
+
         mDatabase=FirebaseDatabase.getInstance();
-        button=view.findViewById(R.id.card_adduser_button);
+        cardView=view.findViewById(R.id.card_adminaddremove);
+        frameLayout=view.findViewById(R.id.frame_addremove_admin);
+        buttonAdd=view.findViewById(R.id.card_addadmin_button);
+        buttonRemove=view.findViewById(R.id.card_removeadmin_button);
         name=view.findViewById(R.id.card_name);
         email=view.findViewById(R.id.card_email);
         mobileNumber=view.findViewById(R.id.card_phone);
         name.setText(information.getName());
         email.setText(information.getEmail());
         mobileNumber.setText(information.getMobile());
-        button.setOnClickListener(this);
-        button.setTag(position);
+        buttonAdd.setOnClickListener(this);
+        buttonRemove.setOnClickListener(this);
+        cardView.setOnClickListener(this);
+        buttonAdd.setTag(position);
+        buttonRemove.setTag(position);
+        frameLayout.setTag(position);
         return view;
     }
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.card_adduser_button)
+        if(view.getId()==R.id.card_adminaddremove)
+        {
+            frameLayout=view.findViewById(R.id.frame_addremove_admin);
+            if(frameLayout.getVisibility()==View.VISIBLE)
+            {
+                frameLayout.setVisibility(View.GONE);
+            }
+            else
+            {
+                frameLayout.setVisibility(View.VISIBLE);
+            }
+        }
+        if(view.getId()==R.id.card_addadmin_button)
         {
             AdminInformation information=getItem((Integer) view.getTag());
-            mRef=mDatabase.getReference("AdminSignUpRequest").child(information.getKey());
-            mRef.child("status").setValue(1);
-            mRef.removeValue();
-            //TODO:Generate password and notify to admin
-            mRef=mDatabase.getReference("Admin");
             progressDialog=new ProgressDialog(getContext());
             progressDialog.setMessage("Adding Admin...");
             progressDialog.show();
             //add admin
-            addAdmin(email.getText().toString(),randomAlphaNumeric(8));
-            Toast.makeText(getContext(),"Admin Added",Toast.LENGTH_SHORT).show();
-            remove(information);
-            notifyDataSetChanged();
+            addAdmin(information,randomAlphaNumeric(8));
 
+            notifyDataSetChanged();
+        }
+        if(view.getId()==R.id.card_removeadmin_button)
+        {
+            AdminInformation information=getItem((Integer) view.getTag());
+            mRef=mDatabase.getReference("AdminSignUpRequest").child(information.getKey());
+            mRef.child("status").setValue(-1);
+            mRef.removeValue();
+            remove(information);
+            Toast.makeText(getContext(),"Admin Request Denied",Toast.LENGTH_SHORT).show();
+            notifyDataSetChanged();
         }
     }
     public static String randomAlphaNumeric(int count) {
@@ -98,36 +120,39 @@ public class AddAdminAdapter extends ArrayAdapter<AdminInformation> implements V
         return builder.toString();
 
     }
-    private void addAdmin(String username,String password) {
-        this.username=username;
+    private void addAdmin(final AdminInformation information, String password) {
+        this.username=information.getEmail();
 
-
+        //TODO: password initialisation to be removed
         password="12345678";
-
 
         this.password=password;
 
         mAuth= FirebaseAuth.getInstance();
 
 
-        mAuth.createUserWithEmailAndPassword(username,password).addOnCompleteListener((Activity) getContext(), new OnCompleteListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(this.username,this.password).addOnCompleteListener((Activity) getContext(), new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful())
                 {
                     progressDialog.dismiss();
-                    setUserToDatabase();
+                    mRef=mDatabase.getReference("AdminSignUpRequest").child(information.getKey());
+                    mRef.child("status").setValue(1);
+                    mRef.removeValue();
+                    setAdminToDatabase(information);
+                    remove(information);
                 }
                 else
                 {
+                    Toast.makeText(getContext(),"User Already Exist",Toast.LENGTH_SHORT).show();
 
                     progressDialog.dismiss();
                 }
             }
         });
     }
-
-    private void setUserToDatabase() {
+    private void setAdminToDatabase(final AdminInformation information) {
         mAuth.signInWithEmailAndPassword(username,password).addOnCompleteListener((Activity) getContext(), new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -135,8 +160,12 @@ public class AddAdminAdapter extends ArrayAdapter<AdminInformation> implements V
                 {
                     FirebaseUser user=mAuth.getCurrentUser();
                     String uid=user.getUid();
-                    mRef.child(uid).child("Email").setValue(username);
+                    mRef=mDatabase.getReference("Admin");
+                    mRef.child(uid).child("name").setValue(information.getName());
+                    mRef.child(uid).child("email").setValue(information.getEmail());
+                    mRef.child(uid).child("mobile").setValue(information.getMobile());
                     progressDialog.dismiss();
+                    Toast.makeText(getContext(),"Admin Added",Toast.LENGTH_SHORT).show();
                     //TODO: send notifications to a particular admin about Email n Password
                     //TODO: send email to a particular admin about email n password
                 }

@@ -1,14 +1,23 @@
 package com.example.android.signup.Activities;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.android.signup.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.ProviderQueryResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import static java.security.AccessController.getContext;
 
 public class SignUpActivity extends BaseAuthenticatedActivity implements View.OnClickListener {
     private static final int RESULT_WAIT = 120;
@@ -32,12 +41,16 @@ public class SignUpActivity extends BaseAuthenticatedActivity implements View.On
     @Override
     public void onClick(View view) {
         mDatabase=FirebaseDatabase.getInstance();
-        mRef=mDatabase.getReference("AdminSignUpRequest").push();
-        mRef.child("name").setValue(name.getText().toString());
-        mRef.child("email").setValue(email.getText().toString());
-        mRef.child("mobile").setValue(mobile.getText().toString());
-        mRef.child("status").setValue(0);
-        setResult(RESULT_WAIT);
-        finish();
+        mAuth=FirebaseAuth.getInstance();
+
+            mRef = mDatabase.getReference("AdminSignUpRequest").push();
+            mRef.child("name").setValue(name.getText().toString());
+            mRef.child("email").setValue(email.getText().toString());
+            mRef.child("mobile").setValue(mobile.getText().toString());
+            mRef.child("status").setValue(0);
+            setResult(RESULT_OK);
+            finish();
+
+
     }
 }

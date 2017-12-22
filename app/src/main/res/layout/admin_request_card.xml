@@ -9,6 +9,7 @@
         app:cardCornerRadius="5dp"
         app:cardElevation="5dp"
         android:clickable="true"
+        android:id="@+id/card_adminaddremove"
         >
         <LinearLayout
             android:layout_width="wrap_content"
@@ -36,11 +37,12 @@
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="visible"
+                android:visibility="gone"
+                android:id="@+id/frame_addremove_admin"
                 >
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
                     >
                 <LinearLayout
@@ -80,13 +82,26 @@
                         android:text="8102226243"
                         android:textSize="25sp" />
                 </LinearLayout>
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                     <Button
-                        android:id="@+id/card_adduser_button"
+                        android:id="@+id/card_addadmin_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
-                        android:text="Add User" />
+                        android:text="Add Admin"
+                        android:layout_weight="1"/>
+
+                    <Button
+                        android:id="@+id/card_removeadmin_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:text="Remove Admin"
+                        android:layout_weight="1"
+                        />
+                </LinearLayout>
                 </LinearLayout>
             </FrameLayout>
 

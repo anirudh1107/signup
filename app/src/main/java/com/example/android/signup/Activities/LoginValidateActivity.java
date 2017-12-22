@@ -27,7 +27,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LoginValidateActivity extends BaseActivity implements View.OnClickListener {
 public static final String EXTRAINT="EXTRAINT";
-private Button signup;
+    private static final int REQUEST_SIGNUP = 121;
+    private Button signup;
 private TextView or;
 private View progressBar;
 protected EditText userName, password;
@@ -36,6 +37,7 @@ private FirebaseDatabase mDatabase;
 private DatabaseReference mRef;
 private ChildEventListener mChildEventListener;
     private AdminInformation info;
+    private static final int RESULT_WAIT = 120;
 
     @Override
  protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,7 @@ private ChildEventListener mChildEventListener;
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Toast.makeText(getApplicationContext(), "Logged In As " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Logged In As " + user.getEmail(), Toast.LENGTH_SHORT).show();
 
 
                 } else {
@@ -78,7 +80,8 @@ private ChildEventListener mChildEventListener;
         if(view==signup)
         {
             Intent intent=new Intent(this,SignUpActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent,REQUEST_SIGNUP);
+            setResult(RESULT_WAIT);
             finish();
         }
     }
@@ -164,5 +167,22 @@ private ChildEventListener mChildEventListener;
         super.onStop();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_SIGNUP)
+        {
+            if(resultCode==RESULT_OK)
+            {
+                setResult(RESULT_WAIT);
+                finish();
+            }
+            else
+            {
+                setResult(RESULT_CANCELED);
+                finish();
+            }
+        }
+    }
 }
 

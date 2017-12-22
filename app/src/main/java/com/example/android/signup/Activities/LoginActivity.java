@@ -58,7 +58,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             }
             if (requestCode==ADMIN_LOGIN_CODE)
             {
-                Toast.makeText(this,"gR*",Toast.LENGTH_SHORT).show();
                 if(resultCode==RESULT_OK) {
 
                     startActivity(new Intent(this, AdminHomeActivity.class));
