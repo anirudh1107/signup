@@ -18,6 +18,7 @@ public class BaseActivity extends AppCompatActivity {
     protected FirebaseAuth mAuth;
     protected FirebaseAuth.AuthStateListener mAuthListener;
     protected FirebaseUser user;
+
     protected ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

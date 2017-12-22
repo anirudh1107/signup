@@ -58,12 +58,12 @@ public class AddAdminActivity extends BaseAuthenticatedActivity {
                 information.setKey(key);
                 if(information.getStatus()==1)
                 {
-                    mRef.child(key).removeValue();
+                   // mRef.child(key).removeValue();
                 }
                 else
                 {
                     adapter.add(information);
-                    Log.e("Child","YES");
+
                 }
             }
 
