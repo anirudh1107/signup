@@ -22,11 +22,13 @@ public class AdminHomeActivity extends BaseAuthenticatedActivity {
     String email;
     String password;
     ProgressDialog dialog;
+    private LinearLayout addUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_home);
         sign=(LinearLayout)findViewById(R.id.signup);
+        addUser=findViewById(R.id.new_user);
         dialog=new ProgressDialog(this);
         dialog.setMessage("wait");
         dialog.show();
@@ -52,6 +54,14 @@ public class AdminHomeActivity extends BaseAuthenticatedActivity {
             public void onClick(View view) {
                 Intent i=new Intent(AdminHomeActivity.this,ComplainListenerActivity.class);
                 startActivity(i);
+            }
+        });
+
+        addUser.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AdminHomeActivity.this,user_for_register.class));
             }
         });
     }
