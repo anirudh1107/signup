@@ -76,6 +76,7 @@ public class AddUserAdapter extends ArrayAdapter<UserAddInfo> implements View.On
             mPutRef.child("Address").setValue(current.getAddress());
             mPutRef.child("Mobile").setValue(current.getMobile());
             mPutRef.child("Username").setValue(current.getUsername());
+            mPutRef.child("Locality").setValue(current.getLocality());
 
            mGetRef.child(current.getKey()).removeValue();
 

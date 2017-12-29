@@ -13,12 +13,14 @@ public class UserAddInfo {
     private String Locality;
 
 
-
-    public UserAddInfo(String address, String mobile, String username) {
+    public UserAddInfo(String address, String mobile, String username, String key, String locality) {
         Address = address;
         Mobile = mobile;
         Username = username;
+        this.key = key;
+        Locality = locality;
     }
+
     public String getLocality() {
         return Locality;
     }
