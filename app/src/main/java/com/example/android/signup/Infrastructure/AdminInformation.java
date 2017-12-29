@@ -1,9 +1,5 @@
 package com.example.android.signup.Infrastructure;
 
-/**
- * Created by Stan on 12/20/2017.
- */
-
 public class AdminInformation {
     private String uid;
     private String key;
@@ -11,6 +7,20 @@ public class AdminInformation {
     private String email;
     private String mobile;
     private int status;
+    private String Locality;
+
+    public AdminInformation() {
+    }
+
+    public AdminInformation(String uid, String key, String name, String email, String mobile, int status, String locality) {
+        this.uid = uid;
+        this.key = key;
+        this.name = name;
+        this.email = email;
+        this.mobile = mobile;
+        this.status = status;
+        Locality = locality;
+    }
 
     public void setStatus(int status) {
         this.status = status;
@@ -21,6 +31,14 @@ public class AdminInformation {
         return status;
     }
 
+    public void setLocality(String locality) {
+        Locality = locality;
+    }
+
+    public String getLocality() {
+
+        return Locality;
+    }
     public void setName(String name) {
         this.name = name;
     }

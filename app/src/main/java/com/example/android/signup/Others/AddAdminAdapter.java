@@ -164,6 +164,7 @@ public class AddAdminAdapter extends ArrayAdapter<AdminInformation> implements V
                     mRef.child(uid).child("name").setValue(information.getName());
                     mRef.child(uid).child("email").setValue(information.getEmail());
                     mRef.child(uid).child("mobile").setValue(information.getMobile());
+                    mRef.child(uid).child("Locality").setValue(information.getLocality());
                     progressDialog.dismiss();
                     Toast.makeText(getContext(),"Admin Added",Toast.LENGTH_SHORT).show();
                     //TODO: send notifications to a particular admin about Email n Password

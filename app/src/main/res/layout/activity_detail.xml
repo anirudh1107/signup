@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.android.signup.Activities.Admin.DetailActivity"
     android:orientation="vertical"
+    android:padding="10dp"
     >
 
     <LinearLayout
@@ -84,6 +85,28 @@
             android:maxLength="10"
             android:inputType="number"
             android:hint="MOBILE"
+            />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Locality :"
+            />
+        <EditText
+            android:id="@+id/reg_locality"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:maxLength="10"
+            android:inputType="number"
+            android:hint="LOCALITY"
             />
 
 

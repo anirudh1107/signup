@@ -19,11 +19,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import static java.security.AccessController.getContext;
 
-public class SignUpActivity extends BaseAuthenticatedActivity implements View.OnClickListener {
+public class SignUpActivity extends BaseActivity implements View.OnClickListener {
     private static final int RESULT_WAIT = 120;
     private EditText name;
     private EditText email;
     private EditText mobile;
+    private EditText locality;
     private Button button;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
@@ -35,6 +36,7 @@ public class SignUpActivity extends BaseAuthenticatedActivity implements View.On
         email=findViewById(R.id.signup_email);
         mobile=findViewById(R.id.signup_mobile);
         button=findViewById(R.id.signup_button);
+        locality=findViewById(R.id.signup_locality);
         button.setOnClickListener(this);
     }
 
@@ -47,10 +49,9 @@ public class SignUpActivity extends BaseAuthenticatedActivity implements View.On
             mRef.child("name").setValue(name.getText().toString());
             mRef.child("email").setValue(email.getText().toString());
             mRef.child("mobile").setValue(mobile.getText().toString());
+            mRef.child("Locality").setValue(locality.getText().toString());
             mRef.child("status").setValue(0);
             setResult(RESULT_OK);
             finish();
-
-
     }
 }

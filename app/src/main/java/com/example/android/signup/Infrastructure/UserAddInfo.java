@@ -10,13 +10,22 @@ public class UserAddInfo {
     private String Mobile;
     private String Username;
     private String key;
+    private String Locality;
+
+
 
     public UserAddInfo(String address, String mobile, String username) {
         Address = address;
         Mobile = mobile;
         Username = username;
     }
+    public String getLocality() {
+        return Locality;
+    }
 
+    public void setLocality(String locality) {
+        Locality = locality;
+    }
     public UserAddInfo() {
     }
 
@@ -51,4 +60,5 @@ public class UserAddInfo {
     public void setUsername(String username) {
         Username = username;
     }
+
 }

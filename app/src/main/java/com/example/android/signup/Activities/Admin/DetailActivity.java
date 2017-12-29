@@ -8,17 +8,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.android.signup.Activities.BaseAuthenticatedActivity;
 import com.example.android.signup.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends BaseAuthenticatedActivity {
 
     EditText newName;
     EditText newAdd;
     EditText newMob;
     Button newSub;
+    EditText newLocality;
     FirebaseDatabase database;
     DatabaseReference myRef;
     FirebaseAuth mAuth;
@@ -32,6 +34,8 @@ public class DetailActivity extends AppCompatActivity {
         newAdd=findViewById(R.id.reg_add);
         newMob=findViewById(R.id.reg_mobile);
         newSub=findViewById(R.id.reg_submit);
+        newLocality=findViewById(R.id.reg_locality);
+
         mAuth=FirebaseAuth.getInstance();
         database=FirebaseDatabase.getInstance();
         myRef=database.getReference("User");
@@ -58,13 +62,12 @@ public class DetailActivity extends AppCompatActivity {
                     currentUser.child("Username").setValue(newName.getText().toString());
                     currentUser.child("Address").setValue(newAdd.getText().toString());
                     currentUser.child("Mobile").setValue(newMob.getText().toString());
+                    currentUser.child("Locality").setValue(newLocality.getText().toString());
                     mAuth.signOut();
                     Intent i=new Intent(DetailActivity.this,AdminHomeActivity.class);
                     startActivity(i);
                     finish();
-
                 }
-
             }
         });
     }

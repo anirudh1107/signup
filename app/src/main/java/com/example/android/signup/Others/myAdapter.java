@@ -25,6 +25,7 @@ import java.util.List;
 public class myAdapter extends ArrayAdapter<UserInformation> {
 
     Spinner longComplainStatus;
+
     public myAdapter(@NonNull Context context, int resource, @NonNull List<UserInformation> objects) {
         super(context, resource, objects);
     }

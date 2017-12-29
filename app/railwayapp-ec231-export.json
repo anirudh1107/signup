@@ -1,0 +1,126 @@
+{
+  "CID" : {
+    "Carpenter" : {
+      "C" : 4,
+      "Str" : "car"
+    },
+    "Masson" : {
+      "C" : 5,
+      "Str" : "mas"
+    },
+    "Periodic" : {
+      "C" : 1,
+      "Str" : "per"
+    },
+    "Plumber" : {
+      "C" : 7,
+      "Str" : "plb"
+    },
+    "Road Work" : {
+      "C" : 3,
+      "Str" : "rd"
+    },
+    "Urgent" : {
+      "C" : 2,
+      "Str" : "urg"
+    }
+  },
+  "Complain" : {
+    "-L0i7MnM7wQSLi55tNlE" : {
+      "Description" : "asfd",
+      "Location" : "asdfgu",
+      "MobNumber" : "2313653264",
+      "Status" : 0,
+      "Type" : "Masson",
+      "TypeDetail" : "Flooring Repair",
+      "Uid" : "Ml04xcVvILVmGzwpJJlNhFCB4im2",
+      "cid" : "mas4",
+      "imageUID" : ""
+    },
+    "-L0iBfeBsZssRKFxVIiv" : {
+      "Description" : "",
+      "Location" : "asdfgu",
+      "Mobile Number" : "2313653264",
+      "Status" : 0,
+      "Type" : "Plumber",
+      "TypeDetail" : "Ballcock to be fixed",
+      "Uid" : "Ml04xcVvILVmGzwpJJlNhFCB4im2",
+      "imageUID" : "https://firebasestorage.googleapis.com/v0/b/railwayapp-ec231.appspot.com/o/Photos%2Ftemp-img.jpg2017-12-19%2015%3A25%3A00?alt=media&token=ea244bf4-efab-436d-8eb6-3869c5252602"
+    },
+    "-L0mbu2b9WKypbtn6V-L" : {
+      "Description" : "",
+      "Location" : "asdfgu",
+      "Mobile Number" : "2313653264",
+      "Status" : 0,
+      "Type" : "Plumber",
+      "TypeDetail" : "Ballcock to be fixed",
+      "Uid" : "Ml04xcVvILVmGzwpJJlNhFCB4im2",
+      "imageUID" : "https://firebasestorage.googleapis.com/v0/b/railwayapp-ec231.appspot.com/o/Photos%2Ftemp-img.jpg2017-12-20%2012%3A01%3A05?alt=media&token=f5ce4fef-550b-4404-bac1-95a545b1d5be"
+    },
+    "-L0na5x_Sx6kji2ikTrH" : {
+      "Description" : "",
+      "Location" : "asdfgu",
+      "Mobile Number" : "2313653264",
+      "Status" : 0,
+      "Type" : "Masson",
+      "TypeDetail" : "Plaster Repair",
+      "Uid" : "Ml04xcVvILVmGzwpJJlNhFCB4im2",
+      "imageUID" : "https://firebasestorage.googleapis.com/v0/b/railwayapp-ec231.appspot.com/o/Photos%2Ftemp-img.jpg2017-12-20%2016%3A34%3A06?alt=media&token=c7992f56-a13f-4c0f-afcf-0c0ae63c17a5"
+    },
+    "-L0ruGj_-StOMIVvCvzb" : {
+      "Description" : "hgvbgjj",
+      "Location" : "ghiubvv",
+      "MobNumber" : "6582395584",
+      "Status" : 0,
+      "Type" : "Masson",
+      "TypeDetail" : "Brick Work Repair",
+      "Uid" : "ug3Gztkp3ugLGGJRSnWb3D8qrMD3",
+      "cid" : "mas5",
+      "imageUID" : ""
+    }
+  },
+  "User" : {
+    "Ml04xcVvILVmGzwpJJlNhFCB4im2" : {
+      "Address" : "asdfgu",
+      "Mobile" : "2313653264",
+      "Username" : "Abc"
+    },
+    "oxNF57vWesd5TEkXX1DdqA5lUUF2" : {
+      "Address" : "newJusey",
+      "Mobile" : "4582365896",
+      "Username" : "newOne"
+    },
+    "ug3Gztkp3ugLGGJRSnWb3D8qrMD3" : {
+      "Address" : "ghiubvv",
+      "Mobile" : "6582395584",
+      "Username" : "yello"
+    }
+  },
+  "UserNew" : {
+    "9jZcZehFHpOXC2xJBnJOL3lMnQz2" : {
+      "Address" : "heroLand",
+      "Mobile" : "4585643288",
+      "Username" : "hero"
+    },
+    "BLC5Va226XcYBLv0P2Ynu5RsQS53" : {
+      "Address" : "plumber land",
+      "Mobile" : "1258563458",
+      "Username" : "mario"
+    },
+    "LwskIPYyhcdkkxrcebiyyR3yeOu2" : {
+      "Address" : "let's aee",
+      "Mobile" : "6965856985",
+      "Username" : "yhgff"
+    },
+    "S714XD8oO7ahTmJfOGlmsyTT9IH3" : {
+      "Address" : "noOne",
+      "Mobile" : "0000088855",
+      "Username" : "newOne"
+    },
+    "vWbjOobVczeX4gszsvEnxXMmvsc2" : {
+      "Address" : "plkahndjnd",
+      "Mobile" : "6498758494",
+      "Username" : "yhghh"
+    }
+  }
+}
