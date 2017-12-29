@@ -11,14 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.Admin.AdminHomeActivity"/>
+        <activity android:name=".Activities.Admin.AdminHomeActivity" />
         <activity android:name=".Activities.Admin.AdminAddUserActivity" />
         <activity android:name=".Activities.Admin.ComplainListenerActivity" />
         <activity android:name=".Activities.Admin.DetailActivity" />
-        <activity android:name=".Activities.MainAdmin.HomeActivity"/>
-        <activity android:name=".Activities.MainAdmin.AddAdminActivity"/>
+        <activity android:name=".Activities.MainAdmin.HomeActivity" />
+        <activity android:name=".Activities.MainAdmin.AddAdminActivity" />
         <activity android:name=".Activities.LoginActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,7 +25,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.LoginValidateActivity" />
-        <activity android:name=".Activities.SignUpActivity"></activity>
+        <activity android:name=".Activities.SignUpActivity" />
+        <activity android:name=".Activities.Admin.user_for_register"></activity>
     </application>
 
 </manifest>
