@@ -13,20 +13,22 @@ public class UserInformation {
     private String key;
     private String cid;
     private String imageUID;
+    private String Locality;
 
     public UserInformation() {
     }
 
-    public UserInformation(String description, String location, String mobNumber, int status, String type, String typeDetail, String Cid, String imageuid) {
+    public UserInformation(String description, String location, String mobNumber, int status, String type, String typeDetail, String key, String cid, String imageUID, String locality) {
         Description = description;
         Location = location;
         MobNumber = mobNumber;
         Status = status;
         Type = type;
-        TypeDetail=typeDetail;
-        cid=Cid;
-        imageUID=imageuid;
-
+        TypeDetail = typeDetail;
+        this.key = key;
+        this.cid = cid;
+        this.imageUID = imageUID;
+        Locality = locality;
     }
 
     public String getDescription() {
@@ -99,5 +101,13 @@ public class UserInformation {
 
     public void setImageUID(String imageUID) {
         this.imageUID = imageUID;
+    }
+
+    public String getLocality() {
+        return Locality;
+    }
+
+    public void setLocality(String locality) {
+        Locality = locality;
     }
 }

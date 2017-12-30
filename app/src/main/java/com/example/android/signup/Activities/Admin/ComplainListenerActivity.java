@@ -1,5 +1,7 @@
 package com.example.android.signup.Activities.Admin;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -31,6 +33,8 @@ public class ComplainListenerActivity extends BaseAuthenticatedActivity {
     ListView list_View;
     private ChildEventListener mChildEventListner;
     myAdapter adapter;
+    private SharedPreferences sharedPreferences;
+    private String loc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +43,8 @@ public class ComplainListenerActivity extends BaseAuthenticatedActivity {
 
         mDatabase=FirebaseDatabase.getInstance();
         myRef=mDatabase.getReference().child("Complain");
-
+        sharedPreferences=getSharedPreferences("locality", Context.MODE_PRIVATE);
+        loc=sharedPreferences.getString("Loc","");
         list1=new ArrayList<UserInformation>();
         list_View=findViewById(R.id.list_view1);
         adapter=new myAdapter(this,R.layout.listitem,list1);
@@ -50,10 +55,13 @@ public class ComplainListenerActivity extends BaseAuthenticatedActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 UserInformation newWord = dataSnapshot.getValue(UserInformation.class);
-                String key=dataSnapshot.getKey();
-                newWord.setKey(key);
-                adapter.add(newWord);
+                if(loc.equalsIgnoreCase(newWord.getLocality()))
+                {
+                    String key=dataSnapshot.getKey();
+                    newWord.setKey(key);
+                    adapter.add(newWord);
 
+                }
             }
 
             @Override
