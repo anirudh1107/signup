@@ -52,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/signup_mobile"
+            android:maxLength="10"
             />
     </LinearLayout>
     <LinearLayout
@@ -64,13 +65,15 @@
             android:textSize="25sp"
             android:text="Locality-"
             />
-        <EditText
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/signup_locality"
+            android:entries="@array/Locality"
             />
     </LinearLayout>
     <Button
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Up"

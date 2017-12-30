@@ -3,4 +3,12 @@
     <string name="pending">pending</string>
     <string name="inProgress">In progress</string>
     <string name="completed">Completed</string>
+
+    <string-array name="Locality">
+        <item>NONE</item>
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+    </string-array>
 </resources>

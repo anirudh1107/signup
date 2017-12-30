@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.android.signup.R;
@@ -24,7 +25,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     private EditText name;
     private EditText email;
     private EditText mobile;
-    private EditText locality;
+    private Spinner locality;
     private Button button;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
@@ -45,13 +46,26 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         mDatabase=FirebaseDatabase.getInstance();
         mAuth=FirebaseAuth.getInstance();
 
+        if(name.getText().toString().isEmpty())
+            Toast.makeText(this,"name block is empty",Toast.LENGTH_SHORT).show();
+        else if(email.getText().toString().isEmpty())
+            Toast.makeText(this,"email should not be empty",Toast.LENGTH_SHORT).show();
+        else if(mobile.getText().toString().isEmpty())
+            Toast.makeText(this,"mobile should not be empty",Toast.LENGTH_SHORT).show();
+        else if(String.valueOf(locality.getSelectedItem()).equals("NONE"))
+            Toast.makeText(this,"Please select the locality",Toast.LENGTH_SHORT).show();
+        else
+        {
             mRef = mDatabase.getReference("AdminSignUpRequest").push();
             mRef.child("name").setValue(name.getText().toString());
             mRef.child("email").setValue(email.getText().toString());
             mRef.child("mobile").setValue(mobile.getText().toString());
-            mRef.child("Locality").setValue(locality.getText().toString());
+            mRef.child("Locality").setValue(String.valueOf(locality.getSelectedItem()));
             mRef.child("status").setValue(0);
             setResult(RESULT_OK);
             finish();
+        }
+
+
     }
 }
