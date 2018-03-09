@@ -8,21 +8,35 @@
     android:padding="30dp"
     tools:context="com.example.android.signup.Activities.LoginActivity">
 
-    <EditText
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Username"
-        android:id="@+id/activity_login_validate_username"
-        android:inputType="textEmailAddress"
-        />
+        android:id="@+id/activity_login_validate_username_wrapper"
+        >
 
-    <EditText
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_login_validate_username"
+            android:inputType="textEmailAddress"
+            />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Password"
-        android:id="@+id/activity_login_validate_password"
-        android:inputType="textPassword"
-        />
+        android:id="@+id/activity_login_validate_password_wrapper"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_login_validate_password"
+            android:inputType="textPassword"
+            />
+
+    </android.support.design.widget.TextInputLayout>
 
     <Button
         android:layout_width="match_parent"

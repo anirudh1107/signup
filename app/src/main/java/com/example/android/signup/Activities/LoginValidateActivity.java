@@ -2,6 +2,7 @@ package com.example.android.signup.Activities;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,23 +30,30 @@ public class LoginValidateActivity extends BaseActivity implements View.OnClickL
 public static final String EXTRAINT="EXTRAINT";
     private static final int REQUEST_SIGNUP = 121;
     private Button signup;
-private TextView or;
-private View progressBar;
-protected EditText userName, password;
-private int status;
-private FirebaseDatabase mDatabase;
-private DatabaseReference mRef;
-private ChildEventListener mChildEventListener;
+    private TextView or;
+    private View progressBar;
+    protected EditText userName, password;
+    private int status;
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference mRef;
+    private ChildEventListener mChildEventListener;
     private AdminInformation info;
     private static final int RESULT_WAIT = 120;
+    private TextInputLayout usernameWrapper;
+    private TextInputLayout passwordWrapper;
 
     @Override
  protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_validate);
 
-        userName = (EditText) findViewById(R.id.activity_login_validate_username);
-        password = (EditText) findViewById(R.id.activity_login_validate_password);
+        userName =  findViewById(R.id.activity_login_validate_username);
+        password = findViewById(R.id.activity_login_validate_password);
+        usernameWrapper=findViewById(R.id.activity_login_validate_username_wrapper);
+        passwordWrapper=findViewById(R.id.activity_login_validate_password_wrapper);
+        usernameWrapper.setHint("USERNAME");
+        passwordWrapper.setHint("PASSWORD");
+        passwordWrapper.setPasswordVisibilityToggleEnabled(true);
         progressBar=findViewById(R.id.login_activity_progressbar);
         mAuth=FirebaseAuth.getInstance();
 

@@ -10,50 +10,61 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        >
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:textSize="25sp"
-           android:text="Name-"
-           />
-       <EditText
+
+       <android.support.design.widget.TextInputLayout
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:id="@+id/signup_name"
-           />
+           android:id="@+id/signup_name_wrapper"
+           >
+
+           <EditText
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/signup_name"
+               />
+       </android.support.design.widget.TextInputLayout>
+
    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:text="Email-"
-            />
-        <EditText
+
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/signup_email"
-            />
+            android:id="@+id/signup_email_wrapper"
+            >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/signup_email"
+                />
+        </android.support.design.widget.TextInputLayout>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:text="Mobile-"
-            />
-        <EditText
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/signup_mobile"
-            android:maxLength="10"
-            />
+            android:id="@+id/signup_mobile_wrapper"
+            >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/signup_mobile"
+                android:maxLength="10"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

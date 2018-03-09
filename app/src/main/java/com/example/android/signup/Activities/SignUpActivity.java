@@ -3,6 +3,7 @@ package com.example.android.signup.Activities;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +30,9 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     private Button button;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
+    private TextInputLayout nameWrapper;
+    private TextInputLayout emailWrapper;
+    private TextInputLayout phoneWrapper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +42,12 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         mobile=findViewById(R.id.signup_mobile);
         button=findViewById(R.id.signup_button);
         locality=findViewById(R.id.signup_locality);
+        nameWrapper=findViewById(R.id.signup_name_wrapper);
+        emailWrapper=findViewById(R.id.signup_email_wrapper);
+        phoneWrapper=findViewById(R.id.signup_mobile_wrapper);
+        nameWrapper.setHint("NAME");
+        emailWrapper.setHint("EMAIL ID");
+        phoneWrapper.setHint("PHONE");
         button.setOnClickListener(this);
     }
 
