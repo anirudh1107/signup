@@ -53,6 +53,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 startActivity(new Intent(this, HomeActivity.class));
                 finish();}
 
+
             }
             if (requestCode==ADMIN_LOGIN_CODE)
             {
@@ -66,13 +67,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     Toast.makeText(this,"Request Sent to Main Admin",Toast.LENGTH_SHORT).show();
                 }
             }
-
-
-
-
     }
-
-
     public void login(View view) {
     }
 }
