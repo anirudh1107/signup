@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.android.signup.Activities.BaseAuthenticatedActivity;
+import com.example.android.signup.Activities.LoginActivity;
 import com.example.android.signup.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,7 +27,8 @@ public class HomeActivity extends BaseAuthenticatedActivity implements View.OnCl
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
 
-    private Button button;
+    private Button addAdminbtn;
+    private Button logoutBtn;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +36,10 @@ public class HomeActivity extends BaseAuthenticatedActivity implements View.OnCl
         progressDialog=new ProgressDialog(this);
 
         mDatabase=FirebaseDatabase.getInstance();
-        button=findViewById(R.id.home_activity_adminaddrequest_button);
-        button.setOnClickListener(this);
+        addAdminbtn=findViewById(R.id.home_activity_adminaddrequest_button);
+        addAdminbtn.setOnClickListener(this);
+        logoutBtn=findViewById(R.id.home_activity_mainadmin_logout);
+        logoutBtn.setOnClickListener(this);
      //   mRef=mDatabase.getReference("Admin");
 
         //add user
@@ -50,6 +54,12 @@ public class HomeActivity extends BaseAuthenticatedActivity implements View.OnCl
         if(viewID==R.id.home_activity_adminaddrequest_button)
         {
             startActivity(new Intent(this,AddAdminActivity.class));
+        }
+        if(viewID==R.id.home_activity_mainadmin_logout){
+            mAuth=FirebaseAuth.getInstance();
+            mAuth.signOut();
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
         }
     }
 }
