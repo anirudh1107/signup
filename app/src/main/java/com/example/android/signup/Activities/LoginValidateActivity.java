@@ -55,6 +55,7 @@ public static final String EXTRAINT="EXTRAINT";
         passwordWrapper.setHint("PASSWORD");
         passwordWrapper.setPasswordVisibilityToggleEnabled(true);
         progressBar=findViewById(R.id.login_activity_progressbar);
+        progressBar.setVisibility(View.GONE);
         mAuth=FirebaseAuth.getInstance();
 
         signup=findViewById(R.id.activity_login_validate_signup);
@@ -64,8 +65,8 @@ public static final String EXTRAINT="EXTRAINT";
 
         if(status==0)
         {
-            signup.setVisibility(View.INVISIBLE);
-            or.setVisibility(View.INVISIBLE);
+            signup.setVisibility(View.GONE);
+            or.setVisibility(View.GONE);
         }
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -74,7 +75,6 @@ public static final String EXTRAINT="EXTRAINT";
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     //Toast.makeText(getApplicationContext(), "Logged In As " + user.getEmail(), Toast.LENGTH_SHORT).show();
-
 
                 } else {
                     Toast.makeText(getApplicationContext(), "User Not Logged In", Toast.LENGTH_SHORT).show();
@@ -95,15 +95,28 @@ public static final String EXTRAINT="EXTRAINT";
     }
     public void login(View v) {
         if(status==0){
-            setResult(RESULT_OK);
-            finish();
+            progressBar.setVisibility(View.VISIBLE);
+            mAuth.signInWithEmailAndPassword(userName.getText().toString(), password.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+                        checkMainAdminValidity(userName.getText().toString(), password.getText().toString());
+                        progressBar.setVisibility(View.GONE);
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(),"No internet connection",Toast.LENGTH_LONG).show();
+                        progressBar.setVisibility(View.GONE);
+                    }
+                }
+            });
+
             return;}
         if(userName.getText().toString().length()==0||password.getText().toString().length()==0)
         {
             Toast.makeText(this,"Username or Password is Empty",Toast.LENGTH_SHORT).show();
 
         }
-        else {
+        if(status==1) {
             progressBar.setVisibility(View.VISIBLE);
             mAuth.signInWithEmailAndPassword(userName.getText().toString(), password.getText().toString())
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -113,6 +126,7 @@ public static final String EXTRAINT="EXTRAINT";
                             if (!task.isSuccessful()) {
                                 Toast.makeText(LoginValidateActivity.this, "Authentication failed.",
                                         Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.GONE);
 
                             } else {
 
@@ -125,6 +139,16 @@ public static final String EXTRAINT="EXTRAINT";
                             }
                         }
                     });
+        }
+    }
+
+    private void checkMainAdminValidity(String username, String password) {
+        if(username.compareTo("mainadmin@gmail.com")==0&&password.compareTo("12345678")==0){
+            setResult(RESULT_OK);
+            finish();
+        }
+        else {
+            Toast.makeText(getApplicationContext(),"Incorrect username or password",Toast.LENGTH_LONG).show();
         }
     }
 
