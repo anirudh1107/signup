@@ -96,7 +96,6 @@ public class AddAdminAdapter extends ArrayAdapter<AdminInformation> implements V
             progressDialog.show();
             //add admin
             addAdmin(information,randomAlphaNumeric(8));
-
             notifyDataSetChanged();
         }
         if(view.getId()==R.id.card_removeadmin_button)
@@ -111,7 +110,6 @@ public class AddAdminAdapter extends ArrayAdapter<AdminInformation> implements V
         }
     }
     public static String randomAlphaNumeric(int count) {
-
         StringBuilder builder = new StringBuilder();
         while (count-- != 0) {
             int character = (int)(Math.random()*ALPHA_NUMERIC_STRING.length());
@@ -122,31 +120,25 @@ public class AddAdminAdapter extends ArrayAdapter<AdminInformation> implements V
     }
     private void addAdmin(final AdminInformation information, String password) {
         this.username=information.getEmail();
-
         //TODO: password initialisation to be removed
         password="12345678";
-
         this.password=password;
-
         mAuth= FirebaseAuth.getInstance();
-
-
         mAuth.createUserWithEmailAndPassword(this.username,this.password).addOnCompleteListener((Activity) getContext(), new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful())
                 {
-                    progressDialog.dismiss();
                     mRef=mDatabase.getReference("AdminSignUpRequest").child(information.getKey());
                     mRef.child("status").setValue(1);
                     mRef.removeValue();
                     setAdminToDatabase(information);
                     remove(information);
+                    notifyDataSetChanged();
                 }
                 else
                 {
                     Toast.makeText(getContext(),"User Already Exist",Toast.LENGTH_SHORT).show();
-
                     progressDialog.dismiss();
                 }
             }
@@ -166,7 +158,8 @@ public class AddAdminAdapter extends ArrayAdapter<AdminInformation> implements V
                     mRef.child(uid).child("mobile").setValue(information.getMobile());
                     mRef.child(uid).child("Locality").setValue(information.getLocality());
                     progressDialog.dismiss();
-                    Toast.makeText(getContext(),"Admin Added",Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
+                    Toast.makeText(getContext(),"Admin successfully added",Toast.LENGTH_LONG).show();
                     //TODO: send notifications to a particular admin about Email n Password
                     //TODO: send email to a particular admin about email n password
                 }
