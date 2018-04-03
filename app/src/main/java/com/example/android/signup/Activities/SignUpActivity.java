@@ -1,9 +1,10 @@
 package com.example.android.signup.Activities;
 
-import android.app.Activity;
 import android.os.Bundle;
+
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,14 +13,12 @@ import android.widget.Toast;
 
 import com.example.android.signup.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.ProviderQueryResult;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import static java.security.AccessController.getContext;
 
 public class SignUpActivity extends BaseActivity implements View.OnClickListener {
     private static final int RESULT_WAIT = 120;
@@ -37,6 +36,13 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        initialize();
+        nameWrapper.setHint("NAME");
+        emailWrapper.setHint("EMAIL ID");
+        phoneWrapper.setHint("PHONE");
+        button.setOnClickListener(this);
+    }
+    private void initialize() {
         name=findViewById(R.id.signup_name);
         email=findViewById(R.id.signup_email);
         mobile=findViewById(R.id.signup_mobile);
@@ -45,16 +51,12 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         nameWrapper=findViewById(R.id.signup_name_wrapper);
         emailWrapper=findViewById(R.id.signup_email_wrapper);
         phoneWrapper=findViewById(R.id.signup_mobile_wrapper);
-        nameWrapper.setHint("NAME");
-        emailWrapper.setHint("EMAIL ID");
-        phoneWrapper.setHint("PHONE");
-        button.setOnClickListener(this);
     }
-
     @Override
     public void onClick(View view) {
-        mDatabase=FirebaseDatabase.getInstance();
-        mAuth=FirebaseAuth.getInstance();
+
+
+
 
         if(name.getText().toString().isEmpty())
             Toast.makeText(this,"name block is empty",Toast.LENGTH_SHORT).show();
@@ -66,14 +68,14 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
             Toast.makeText(this,"Please select the locality",Toast.LENGTH_SHORT).show();
         else
         {
+
+            mDatabase=FirebaseDatabase.getInstance();
             mRef = mDatabase.getReference("AdminSignUpRequest").push();
             mRef.child("name").setValue(name.getText().toString());
             mRef.child("email").setValue(email.getText().toString());
             mRef.child("mobile").setValue(mobile.getText().toString());
             mRef.child("Locality").setValue(String.valueOf(locality.getSelectedItem()));
             mRef.child("status").setValue(0);
-            setResult(RESULT_OK);
-            finish();
         }
 
 
