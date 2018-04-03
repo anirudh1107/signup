@@ -3,10 +3,9 @@ package com.example.android.signup.Infrastructure;
 
 public class UserInformation {
 
-
     private String Description;
-    private String Location;
-    private String MobNumber;
+    private String Address;
+    private String Mobile;
     private int Status;
     private String Type;
     private String TypeDetail;
@@ -14,14 +13,26 @@ public class UserInformation {
     private String cid;
     private String imageUID;
     private String Locality;
+    private String Username;
+
+    public void setUsername(String username) {
+        Username = username;
+    }
+
+    public String getUsername() {
+
+        return Username;
+    }
+
+
 
     public UserInformation() {
     }
 
-    public UserInformation(String description, String location, String mobNumber, int status, String type, String typeDetail, String key, String cid, String imageUID, String locality) {
+    public UserInformation(String description, String address, String mobile, int status, String type, String typeDetail, String key, String cid, String imageUID, String locality) {
         Description = description;
-        Location = location;
-        MobNumber = mobNumber;
+        Address = address;
+        Mobile = mobile;
         Status = status;
         Type = type;
         TypeDetail = typeDetail;
@@ -35,12 +46,12 @@ public class UserInformation {
         return Description;
     }
 
-    public String getLocation() {
-        return Location;
+    public String getAddress() {
+        return Address;
     }
 
-    public String getMobNumber() {
-        return MobNumber;
+    public String getMobile() {
+        return Mobile;
     }
 
     public String getCid() {
@@ -59,12 +70,12 @@ public class UserInformation {
         Description = description;
     }
 
-    public void setLocation(String location) {
-        Location = location;
+    public void setAddress(String address) {
+        Address = address;
     }
 
-    public void setMobNumber(String mobNumber) {
-        MobNumber = mobNumber;
+    public void setMobile(String mobile) {
+        Mobile = mobile;
     }
 
     public String getKey() {
