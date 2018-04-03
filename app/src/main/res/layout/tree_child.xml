@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+>
+
+    <ImageView
+        android:id="@+id/tree_img"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_action_arrowright" />
+
+    <TextView
+        android:id="@+id/child_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:layout_toRightOf="@id/tree_img"
+        android:text="List Item"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+        android:textStyle="bold" />
+
+</RelativeLayout>
