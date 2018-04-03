@@ -26,7 +26,7 @@ public class HomeActivity extends BaseAuthenticatedActivity implements View.OnCl
 
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
-
+    private Button detailBtn;
     private Button addAdminbtn;
     private Button logoutBtn;
     @Override
@@ -37,6 +37,8 @@ public class HomeActivity extends BaseAuthenticatedActivity implements View.OnCl
 
         mDatabase=FirebaseDatabase.getInstance();
         addAdminbtn=findViewById(R.id.home_activity_adminaddrequest_button);
+        detailBtn=findViewById(R.id.home_activity_overall_button);
+        detailBtn.setOnClickListener(this);
         addAdminbtn.setOnClickListener(this);
         logoutBtn=findViewById(R.id.home_activity_mainadmin_logout);
         logoutBtn.setOnClickListener(this);
@@ -60,6 +62,10 @@ public class HomeActivity extends BaseAuthenticatedActivity implements View.OnCl
             mAuth.signOut();
             startActivity(new Intent(this, LoginActivity.class));
             finish();
+        }
+        if(viewID==R.id.home_activity_overall_button)
+        {
+            startActivity(new Intent(this,OverallDetailActivity.class));
         }
     }
 }
