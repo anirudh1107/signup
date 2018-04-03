@@ -15,7 +15,8 @@
         android:layout_marginTop="90dp"
         android:text="Login"
         android:textSize="25sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_alignLeft="@+id/activity_login_mainbutton" />
 
     <Button
         android:id="@+id/activity_login_mainbutton"
