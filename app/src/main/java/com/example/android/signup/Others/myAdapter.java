@@ -67,8 +67,8 @@ public class myAdapter extends ArrayAdapter<UserInformation> {
         longComplaintId.setText(current.getCid());
         longComplaintType.setText(current.getType());
         subType.setText(current.getTypeDetail());
-        location.setText(current.getLocation());
-        longNumber.setText(current.getMobNumber());
+        location.setText(current.getAddress());
+        longNumber.setText(current.getMobile());
         longComplaintDisc.setText(current.getDescription());
         setupSpinner(current);
         onTap.setVisibility(View.GONE);
