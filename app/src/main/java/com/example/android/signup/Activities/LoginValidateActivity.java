@@ -29,7 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginValidateActivity extends BaseActivity implements View.OnClickListener {
 public static final String EXTRAINT="EXTRAINT";
     private static final int REQUEST_SIGNUP = 121;
-    private Button signup;
+    private Button signup,forgot;
     private TextView or;
     private View progressBar;
     protected EditText userName, password;
@@ -59,6 +59,8 @@ public static final String EXTRAINT="EXTRAINT";
 
         signup=findViewById(R.id.activity_login_validate_signup);
         signup.setOnClickListener(this);
+        forgot=findViewById(R.id.activity_login_validate_forgot);
+        forgot.setOnClickListener(this);
         or=findViewById(R.id.or);
         status=getIntent().getIntExtra(EXTRAINT,0);
 
@@ -92,6 +94,15 @@ public static final String EXTRAINT="EXTRAINT";
             setResult(RESULT_WAIT);
             finish();
         }
+
+        if(view==forgot)
+        {
+            Intent intent=new Intent(this,ForgotPassword.class);
+            startActivity(intent);
+            finish();
+        }
+
+
     }
     public void login(View v) {
         if(status==0){

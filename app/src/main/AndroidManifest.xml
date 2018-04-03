@@ -26,7 +26,9 @@
         </activity>
         <activity android:name=".Activities.LoginValidateActivity" />
         <activity android:name=".Activities.SignUpActivity" />
-        <activity android:name=".Activities.Admin.user_for_register"></activity>
+        <activity android:name=".Activities.Admin.user_for_register" />
+        <activity android:name=".Activities.Admin.PasswordChange" />
+        <activity android:name=".Activities.ForgotPassword"></activity>
     </application>
 
 </manifest>

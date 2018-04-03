@@ -13,6 +13,7 @@
     android:scaleType="fitXY"
     android:src="@drawable/railway"
     />
+
 <LinearLayout
     android:id="@+id/signup"
     android:layout_width="match_parent"
@@ -69,6 +70,8 @@
             android:textColor="#FFF"
             />
 
+
+
     </LinearLayout>
 
 
@@ -94,6 +97,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New User"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:textColor="#FFF"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/password_change"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:background="#558B2F"
+        android:layout_margin="10dp"
+        >
+
+        <TextView
+            android:layout_marginLeft="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change password"
             android:layout_gravity="center"
             android:textSize="20sp"
             android:textColor="#FFF"
