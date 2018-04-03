@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_node"
+
+    >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_list_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    >
+    <ImageView
+        android:id="@+id/tree_img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_action_arrowdown"
+        android:layout_centerVertical="true"
+        />
+
+    <TextView
+        android:textColor="#000"
+        android:id="@+id/tree_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tree_img"
+        android:text="List Item"
+        android:textSize="25sp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
+        android:layout_centerVertical="true"
+        />
+
+</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/child_node"
+        >
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        >
+
+        <ImageView
+            android:id="@+id/root_img"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_action_arrowright"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/root_admin_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textColor="#000"
+            android:layout_toRightOf="@id/root_img"
+            android:text="List Item"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/parent_rv"
+        android:layout_marginLeft="80dp"
+        />
+    </LinearLayout>
+</LinearLayout>
