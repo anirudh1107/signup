@@ -1,5 +1,7 @@
 package com.example.android.signup.Others;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -14,6 +16,10 @@ import android.widget.TextView;
 import com.example.android.signup.Activities.Admin.AdminHomeActivity;
 import com.example.android.signup.Infrastructure.UserAddInfo;
 import com.example.android.signup.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseOptions;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -36,12 +42,14 @@ public class AddUserAdapter extends ArrayAdapter<UserAddInfo> implements View.On
     private DatabaseReference mGetRef;
     private DatabaseReference mPutRef;
     private FirebaseAuth mAuth;
+    private ProgressDialog progressDialog;
     UserAddInfo current;
     private TextView name;
     private TextView address;
     private TextView phone;
     private Button add;
     private Button reject;
+    private TextView Email;
     public AddUserAdapter(@NonNull Context context, int resource, @NonNull List<UserAddInfo> objects) {
         super(context, resource, objects);
     }
@@ -57,7 +65,9 @@ public class AddUserAdapter extends ArrayAdapter<UserAddInfo> implements View.On
         address=view.findViewById(R.id.user_request_address);
         phone=view.findViewById(R.id.user_request_phone);
         add=view.findViewById(R.id.user_request_accept);
+        Email=view.findViewById(R.id.user_request_email_id);
         reject=view.findViewById(R.id.user_request_reject);
+        Email.setText(current.getEmailId());
         name.setText(current.getUsername());
         address.setText(current.getAddress());
         phone.setText(current.getMobile());
@@ -72,18 +82,47 @@ public class AddUserAdapter extends ArrayAdapter<UserAddInfo> implements View.On
 
         if(view.getId()==R.id.user_request_accept)
         {
-            mPutRef=mDatabase.getReference().child("User").child(current.getKey());
-            mPutRef.child("Address").setValue(current.getAddress());
-            mPutRef.child("Mobile").setValue(current.getMobile());
-            mPutRef.child("Username").setValue(current.getUsername());
-            mPutRef.child("Locality").setValue(current.getLocality());
+
+            mAuth= FirebaseAuth.getInstance();
+            progressDialog=new ProgressDialog(getContext());
+            progressDialog.setMessage("Adding user....");
+            progressDialog.show();
+            mAuth.createUserWithEmailAndPassword(current.getEmailId(),current.getPassword()).addOnCompleteListener((Activity) getContext(), new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful())
+                    {
+                        WriteData();
+                    }
+                }
+            });
 
            mGetRef.child(current.getKey()).removeValue();
+           notifyDataSetChanged();
 
         }
         if(view.getId()==R.id.user_request_reject)
         {
             mGetRef.child(current.getKey()).removeValue();
+            notifyDataSetChanged();
         }
+    }
+
+    public void WriteData()
+    {
+
+        mAuth.signInWithEmailAndPassword(current.getEmailId(),current.getPassword()).addOnCompleteListener((Activity) getContext(), new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                mPutRef=mDatabase.getReference().child("User").child(mAuth.getCurrentUser().getUid());
+                mPutRef.child("Address").setValue(current.getAddress());
+                mPutRef.child("Mobile").setValue(current.getMobile());
+                mPutRef.child("Username").setValue(current.getUsername());
+                mPutRef.child("Locality").setValue(current.getLocality());
+                progressDialog.dismiss();
+                notifyDataSetChanged();
+            }
+        });
+//
     }
 }

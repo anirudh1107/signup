@@ -6,6 +6,8 @@ package com.example.android.signup.Infrastructure;
 
 public class UserAddInfo {
 
+    private String EmailId;
+    private String Password;
     private String Address;
     private String Mobile;
     private String Username;
@@ -13,7 +15,9 @@ public class UserAddInfo {
     private String Locality;
 
 
-    public UserAddInfo(String address, String mobile, String username, String key, String locality) {
+    public UserAddInfo(String emailId, String password, String address, String mobile, String username, String key, String locality) {
+        EmailId = emailId;
+        Password = password;
         Address = address;
         Mobile = mobile;
         Username = username;
@@ -37,6 +41,22 @@ public class UserAddInfo {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public String getEmailId() {
+        return EmailId;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setEmailId(String emailId) {
+        EmailId = emailId;
+    }
+//
+    public void setPassword(String password) {
+        Password = password;
     }
 
     public String getAddress() {

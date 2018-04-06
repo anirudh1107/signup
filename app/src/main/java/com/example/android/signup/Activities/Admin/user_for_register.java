@@ -27,7 +27,7 @@ public class user_for_register extends BaseAuthenticatedActivity {
     private List<UserAddInfo> list1;
     AddUserAdapter adapter;
     ListView listView1;
-
+//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
