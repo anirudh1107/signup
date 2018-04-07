@@ -32,6 +32,7 @@ public class AdminHomeActivity extends BaseAuthenticatedActivity {
     ProgressDialog dialog;
     private LinearLayout addUser;
     private LinearLayout passwordchange;
+    private LinearLayout feedback;
     private FirebaseDatabase mDatabse;
     private DatabaseReference mRef;
     private SharedPreferences sharedPreferences;
@@ -42,6 +43,7 @@ public class AdminHomeActivity extends BaseAuthenticatedActivity {
         sign=(LinearLayout)findViewById(R.id.signup);
         addUser=findViewById(R.id.new_user);
         passwordchange=findViewById(R.id.password_change);
+        feedback=findViewById(R.id.feedback_open);
         sharedPreferences=getSharedPreferences("locality", Context.MODE_PRIVATE);
         dialog=new ProgressDialog(this);
         dialog.setMessage("wait");
@@ -118,6 +120,13 @@ public class AdminHomeActivity extends BaseAuthenticatedActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AdminHomeActivity.this,PasswordChange.class));
+            }
+        });
+
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdminHomeActivity.this,FeedbackViewer.class));
             }
         });
     }

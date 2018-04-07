@@ -7,6 +7,8 @@
     android:orientation="vertical"
     tools:context="com.example.android.signup.Activities.Admin.AdminHomeActivity">
 
+
+
 <ImageView
     android:layout_width="match_parent"
     android:layout_height="150dp"
@@ -104,6 +106,29 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/feedback_open"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:background="#558B2F"
+        android:layout_margin="10dp"
+        >
+
+        <TextView
+            android:layout_marginLeft="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feedbacks"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:textColor="#FFF"
+            />
+
+
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/password_change"
@@ -124,7 +149,11 @@
             android:textColor="#FFF"
             />
 
+
+
     </LinearLayout>
+
+
 
 
 </LinearLayout>

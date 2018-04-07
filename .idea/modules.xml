@@ -3,8 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/signup.iml" filepath="$PROJECT_DIR$/.idea/signup.iml" />
+      <module fileurl="file://$PROJECT_DIR$/signup.iml" filepath="$PROJECT_DIR$/signup.iml" />
       <module fileurl="file://E:\MiApps\Android\Railway\signup\signup.iml" filepath="E:\MiApps\Android\Railway\signup\signup.iml" />
+      <module fileurl="file://C:\Users\utkarshh12\AndroidStudioProjects\signup\.idea\signup.iml" filepath="C:\Users\utkarshh12\AndroidStudioProjects\signup\.idea\signup.iml" />
     </modules>
   </component>
 </project>
